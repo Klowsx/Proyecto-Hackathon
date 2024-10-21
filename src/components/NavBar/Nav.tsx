@@ -4,10 +4,17 @@ import { ShoppingCartIcon } from "@heroicons/react/16/solid";
 import { useCartContext } from "../CartContext/CartContext";
 import { useEffect, useState } from "react";
 
+// Define una interfaz para el producto
+interface Product {
+  name: string;
+  price: number;
+}
+
 export default function NavBar() {
-  const { productos } = useCartContext();
-  const [distinctProducts, setDistinctProducts] = useState([]);
+  const { productos }: { productos: Product[] } = useCartContext(); // Asegúrate de que useCartContext tenga el tipo correcto
+  const [distinctProducts, setDistinctProducts] = useState<Product[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  
   const toggleCart = () => setIsCartOpen(!isCartOpen);
 
   useEffect(() => {
@@ -26,14 +33,14 @@ export default function NavBar() {
         </Link>
 
         <div className="space-x-4">
+          <Link href="/Inicio" className="hover:text-blue-500">
+            Inicio
+          </Link>
           <Link href="/" className="hover:text-blue-500">
-            Home
+            Comercio
           </Link>
           <Link href="/Nosotros" className="hover:text-blue-500">
-            About
-          </Link>
-          <Link href="/contact" className="hover:text-blue-500">
-            Contact
+            Nosotros
           </Link>
         </div>
         <div className="relative">
@@ -60,8 +67,7 @@ export default function NavBar() {
                       <span>
                         {productos
                           .filter((prod) => prod.name === product.name)
-                          .map((prod) => prod.price)
-                          .reduce((acumulador, valorActual) => acumulador + valorActual, 0)}
+                          .reduce((acumulador, prod) => acumulador + prod.price, 0)}
                       </span>
                     </li>
                   ))}
@@ -76,3 +82,5 @@ export default function NavBar() {
     </nav>
   );
 }
+
+

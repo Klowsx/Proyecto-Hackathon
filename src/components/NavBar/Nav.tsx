@@ -14,7 +14,7 @@ export default function NavBar() {
   const { productos }: { productos: Product[] } = useCartContext(); // Asegúrate de que useCartContext tenga el tipo correcto
   const [distinctProducts, setDistinctProducts] = useState<Product[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  
+
   const toggleCart = () => setIsCartOpen(!isCartOpen);
 
   useEffect(() => {
@@ -55,23 +55,31 @@ export default function NavBar() {
           {isCartOpen && (
             <div className="absolute right-0 mt-2 w-64 bg-white shadow-lg rounded-lg p-4">
               {distinctProducts.length > 0 ? (
-                <ul>
-                  {distinctProducts.map((product, index) => (
-                    <li key={index} className="border-b py-2 text-gray-800 flex justify-between">
-                      <span>
-                        {product.name}
-                        {productos.filter((prod) => prod.name === product.name).length !== 0
-                          ? ` x ${productos.filter((prod) => prod.name === product.name).length}`
-                          : ""}
-                      </span>
-                      <span>
-                        {productos
-                          .filter((prod) => prod.name === product.name)
-                          .reduce((acumulador, prod) => acumulador + prod.price, 0)}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <>
+                  <ul>
+                    {distinctProducts.map((product, index) => (
+                      <li key={index} className="border-b py-2 text-gray-800 flex justify-between">
+                        <span>
+                          {product.name}
+                          {productos.filter((prod) => prod.name === product.name).length !== 0
+                            ? ` x ${productos.filter((prod) => prod.name === product.name).length}`
+                            : ""}
+                        </span>
+                        <span>
+                          {productos
+                            .filter((prod) => prod.name === product.name)
+                            .reduce((acumulador, prod) => acumulador + prod.price, 0)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {/* Botón de proceder a pago */}
+                  <Link href="/Pago"> {/* Enlace a la página de pago */}
+                    <button className="mt-2 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+                      Proceder a Pago
+                    </button>
+                  </Link>
+                </>
               ) : (
                 <p className="text-gray-600">No tienes productos</p>
               )}
@@ -82,5 +90,3 @@ export default function NavBar() {
     </nav>
   );
 }
-
-

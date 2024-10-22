@@ -26,7 +26,7 @@ export default function NavBar() {
   }, [productos]);
 
   return (
-    <nav className="navbar bg-light p-4 bg-black">
+    <nav className="navbar bg-light p-4 bg-purple-800">
       <div className="container mx-auto flex justify-between items-center ">
         <Link href="/" className="text-xl font-bold">
           Pagina Ecommerce

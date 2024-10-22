@@ -20,7 +20,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
   setSortOrder,
 }) => {
   return (
-    <div className="flex flex-wrap justify-around items-center text-gray-400 bg-gray-950  m-3 p-3 rounded-xl">
+    <div className="flex flex-wrap justify-around items-center text-gray-400 bg-gray-100 mt-3 p-3 rounded-xl">
       <input
         type="text"
         placeholder="Buscar productos..."
@@ -33,10 +33,10 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
         value={selectedCategory}
         className="p-2 border border-gray-300 rounded mb-2 w-64 h-10">
         <option value="">Todas las categorías</option>
-        <option value="electronics">Electrónica</option>
-        <option value="jewelery">Joyería</option>
-        <option value="men's clothing">Ropa de Hombre</option>
-        <option value="women's clothing">Ropa de Mujer</option>
+        <option value="Mola">Mola</option>
+        <option value="Accesorios">Accesorios</option>
+        <option value="Muebles">Muebles</option>
+        <option value="Vajillas">Vajillas</option>
       </select>
       <select
         onChange={(e) => setSortOrder(e.target.value)}

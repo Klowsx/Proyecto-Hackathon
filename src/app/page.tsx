@@ -1,34 +1,16 @@
-// src/app/page.tsx
 "use client";
 
 import ProductCard from "@/components/Products/ProductCard";
-import ProductFilters from "@/components/ProductFilters/ProductFilters"; // Importa el nuevo componente
+import ProductFilters from "@/components/ProductFilters/ProductFilters";
+import staticProducts, { Product } from "@/data/staticProducts"; // Importar productos
 import { useState, useEffect } from "react";
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  image: string;
-  category: string; // Incluye la categoría aquí
-}
-
 export default function Home() {
-  const [productos, setProductos] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [productos, setProductos] = useState<Product[]>(staticProducts); // Usar los productos estáticos
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>(staticProducts);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc"); // "asc" o "desc"
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products?limit=10")
-      .then((response) => response.json())
-      .then((productos) => {
-        setProductos(productos);
-        setFilteredProducts(productos); // Inicialmente, todos los productos son filtrados
-      });
-  }, []);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   // Filtrar y ordenar productos cuando cambie alguno de los estados relevantes
   useEffect(() => {
@@ -56,7 +38,6 @@ export default function Home() {
 
   return (
     <>
-      {/* Usar el componente de filtros */}
       <ProductFilters
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -66,7 +47,7 @@ export default function Home() {
         setSortOrder={setSortOrder}
       />
 
-      <div className="flex items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <div className="flex  justify-items-center min-h-screen p-8 gap-16 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-wrap gap-8 items-center sm:items-start justify-center">
           {filteredProducts.map((producto) => (
             <ProductCard

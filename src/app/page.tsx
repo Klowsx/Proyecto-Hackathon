@@ -37,7 +37,7 @@ export default function Home() {
   }, [productos, searchTerm, selectedCategory, sortOrder]);
 
   return (
-    <>
+    <div className="">
       <ProductFilters
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
@@ -47,8 +47,8 @@ export default function Home() {
         setSortOrder={setSortOrder}
       />
 
-      <div className="flex  justify-items-center min-h-screen p-8 gap-16 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-wrap gap-8 items-center sm:items-start justify-center">
+      <div className="flex  justify-items-center min-h-screen p-8 gap-16 font-[family-name:var(--font-geist-sans)] ">
+        <main className="flex flex-wrap gap-8 items-center sm:items-start justify-center ">
           {filteredProducts.map((producto) => (
             <ProductCard
               key={producto.id}
@@ -60,6 +60,6 @@ export default function Home() {
           ))}
         </main>
       </div>
-    </>
+    </div>
   );
 }

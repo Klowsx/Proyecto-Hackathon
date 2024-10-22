@@ -4,14 +4,14 @@ import { ShoppingCartIcon } from "@heroicons/react/16/solid";
 import { useCartContext } from "../CartContext/CartContext";
 import { useEffect, useState } from "react";
 
-// Define una interfaz para el producto
+
 interface Product {
   name: string;
   price: number;
 }
 
 export default function NavBar() {
-  const { productos }: { productos: Product[] } = useCartContext(); // Asegúrate de que useCartContext tenga el tipo correcto
+  const { productos }: { productos: Product[] } = useCartContext(); 
   const [distinctProducts, setDistinctProducts] = useState<Product[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
 
@@ -26,25 +26,25 @@ export default function NavBar() {
   }, [productos]);
 
   return (
-    <nav className="navbar bg-light p-4 bg-purple-800">
+    <nav className="navbar bg-light p-4 bg-rose-700">
       <div className="container mx-auto flex justify-between items-center ">
         <Link href="/" className="text-xl font-bold">
           Pagina Ecommerce
         </Link>
 
         <div className="space-x-4">
-          <Link href="/Inicio" className="hover:text-blue-500">
+          <Link href="/Inicio" className="hover:text-rose-200">
             Inicio
           </Link>
-          <Link href="/" className="hover:text-blue-500">
+          <Link href="/" className="hover:text-rose-200">
             Comercio
           </Link>
-          <Link href="/Nosotros" className="hover:text-blue-500">
+          <Link href="/Nosotros" className="hover:text-rose-200">
             Nosotros
           </Link>
         </div>
         <div className="relative">
-          <button onClick={toggleCart} className="text-white hover:text-gray-400">
+          <button onClick={toggleCart} className="text-white hover:text-rose-200">
             <ShoppingCartIcon className="w-6 h-6" />
             {productos.length > 0 && (
               <span className="absolute top-2 right-2 bg-red-600 text-white rounded-full w-5 h-5">
@@ -73,8 +73,7 @@ export default function NavBar() {
                       </li>
                     ))}
                   </ul>
-                  {/* Botón de proceder a pago */}
-                  <Link href="/Pago"> {/* Enlace a la página de pago */}
+                  <Link href="/Pago"> 
                     <button className="mt-2 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
                       Proceder a Pago
                     </button>

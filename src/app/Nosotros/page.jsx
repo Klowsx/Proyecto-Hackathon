@@ -29,7 +29,7 @@ export default function SobreNosotros() {
   
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center bg-white p-8">
+      <div className="min-h-screen flex flex-col items-center p-8">
         <div className="flex flex-col justify-center items-center mb-8 mt-18">
           <h1 className="text-4xl font-bold mb-4 text-black">Sobre Nosotros</h1>
           <p className="text-center text-lg text-black">A continuación se presentan a los integrantes que conforman nuestro equipo</p>

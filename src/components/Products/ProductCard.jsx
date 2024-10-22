@@ -23,7 +23,7 @@ export default function ProductCard({ name, description, price, image }) {
       <p className="overflow-hidden h-24 ">{description}</p>
       <p className="mt-3">${price}</p>
       <button
-        className="p-3 mt-1 bg-purple-700 text-white rounded-lg w-24"
+        className="p-3 mt-1 bg-rose-700 text-white rounded-lg w-24"
         onClick={() => {
           dispatch({
             type: "ADD_PRODUCT",

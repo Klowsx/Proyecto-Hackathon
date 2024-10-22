@@ -1,18 +1,18 @@
 "use client";
 import Image from 'next/image';
-import fondoArtesImage from '@/app/assets/images/artesanias_panameñas.jpg'; // Asegúrate de cambiar esto por la imagen que desees
+import fondoArtesImage from '@/app/assets/images/artesanias_panameñas.jpg'; 
 import React from 'react';
 
 const WelcomeSection: React.FC = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between w-full h-[120vh] bg-pink-50 overflow-hidden">
+    <div className="flex flex-col md:flex-row items-center justify-between w-full h-[120vh] overflow-hidden">
       <div className="relative md:w-1/2 h-full flex justify-center items-center">
         <div className="w-full h-full overflow-hidden rounded-lg shadow-lg border-2 border-gray-300">
           <Image
             src={fondoArtesImage}
             alt="Descripción de la imagen"
-            layout="fill" // Para que ocupe todo el contenedor
-            objectFit="cover" // Para mantener la proporción de la imagen
+            layout="fill" 
+            objectFit="cover" 
             className="object-cover" 
           />
         </div>
@@ -33,7 +33,7 @@ const WelcomeSection: React.FC = () => {
 export default function Inicio() {
   return (
     <>
-      <div className="h-screen flex justify-start items-center bg-white overflow-hidden">
+      <div className="h-screen flex justify-start items-center overflow-hidden">
         <WelcomeSection />
       </div>
     </>
